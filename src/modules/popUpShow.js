@@ -6,8 +6,8 @@ const popUpShow = () => {
     const discountPopUp = document.querySelector('.popup-discount');
     const consultPopUp = document.querySelector('.popup-consultation');
 
-    const popUpList = [callBtns, discountBtns];
-    const popUps = [callPopUp, discountPopUp];
+    const popUpList = [callBtns, discountBtns, consultBtns];
+    const popUps = [callPopUp, discountPopUp, consultPopUp];
 
     const togglePopUp = (smth) => {
         smth.style.display = 'block'
@@ -27,18 +27,25 @@ const popUpShow = () => {
         if (elem == callPopUp) {
             togglePopUp(callPopUp);
         } else {
-            togglePopUp(discountPopUp);
+            if (elem == discountPopUp) {
+                togglePopUp(discountPopUp);
+            } else {
+                togglePopUp(consultPopUp)
+            }
     }
     }
 
     const bind = () => {
         popUpList.forEach((elem) => {
-        elem.forEach((btn) => {
-            btn.addEventListener('click', () => checkPopUp(elem))
-        });
-        popUps.forEach((elem) => {
-            elem.addEventListener('click',(event) => closePopUp(elem))
-        })
+            elem.forEach((btn) => {
+                btn.addEventListener('click', (event) => {
+                    event.preventDefault(); 
+                    checkPopUp(elem)
+                })
+            });
+            popUps.forEach((elem) => {
+                elem.addEventListener('click',(event) => closePopUp(elem))
+            })
     })}
     bind()
     console.log(1);
