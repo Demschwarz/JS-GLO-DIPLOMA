@@ -1,26 +1,48 @@
 const popUpShow = () => {
-    const call = document.querySelectorAll('a.call-btn');
-    const popUp = document.querySelector('.popup-call');
-    const togglePopUp = () => {
-        popUp.style.display = 'block'
+    const callBtns = document.querySelectorAll('a.call-btn'); // получаем кнопки
+    const discountBtns = document.querySelectorAll('.discount-btn');
+    const consultBtns = document.querySelectorAll('.director-btn');
+    const callPopUp = document.querySelector('.popup-call'); // получаем формыы
+    const discountPopUp = document.querySelector('.popup-discount');
+    const consultPopUp = document.querySelector('.popup-consultation');
+
+    const popUpList = [callBtns, discountBtns];
+    const popUps = [callPopUp, discountPopUp];
+
+    const togglePopUp = (smth) => {
+        smth.style.display = 'block'
     }
-    call.forEach((elem) => {
-        elem.addEventListener('click', togglePopUp)
-    })
-    const closePopup = () => {
-        popUp.style.display = 'none';
-    }
-    popUp.addEventListener('click', (event) => {
+
+    const closePopUp = (elem) => {
         let target = event.target;
         if (target.classList.contains('popup-close')) {
-            popUp.style.display = 'none';
+            elem.style.display = 'none';
         } else {
         target = target.closest('.popup-content');
         if (!target) {
-            popUp.style.display = 'none';
+            elem.style.display = 'none';
         }}
-    })
-    
+    }
+    const checkPopUp = (elem) =>{
+        if (elem == callPopUp) {
+            togglePopUp(callPopUp);
+        } else {
+            togglePopUp(discountPopUp);
+    }
+    }
+
+    const bind = () => {
+        popUpList.forEach((elem) => {
+        elem.forEach((btn) => {
+            btn.addEventListener('click', () => checkPopUp(elem))
+        });
+        popUps.forEach((elem) => {
+            elem.addEventListener('click',(event) => closePopUp(elem))
+        })
+    })}
+    bind()
+    console.log(1);
 };
 
-export default popUpShow;
+popUpShow(); // удали строчку, когда будешь раскомментировать следующую
+// export default popUpShow;
