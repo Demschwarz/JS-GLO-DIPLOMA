@@ -2,12 +2,14 @@ const popUpShow = () => {
     const callBtns = document.querySelectorAll('a.call-btn'); // получаем кнопки
     const discountBtns = document.querySelectorAll('.discount-btn');
     const consultBtns = document.querySelectorAll('.director-btn');
+    const checkBtns = document.querySelectorAll('.check-btn');
     const callPopUp = document.querySelector('.popup-call'); // получаем формыы
     const discountPopUp = document.querySelector('.popup-discount');
     const consultPopUp = document.querySelector('.popup-consultation');
+    const checkingPopUp = document.querySelector('.popup-check')
 
-    const popUpList = [callBtns, discountBtns, consultBtns];
-    const popUps = [callPopUp, discountPopUp, consultPopUp];
+    const popUpList = [callBtns, discountBtns, consultBtns, checkBtns];
+    const popUps = [callPopUp, discountPopUp, consultPopUp, checkingPopUp];
 
     const togglePopUp = (smth) => {
         smth.style.display = 'block'
@@ -30,7 +32,11 @@ const popUpShow = () => {
             if (elem == discountBtns) {
                 togglePopUp(discountPopUp);
             } else {
-                togglePopUp(consultPopUp)
+                if (elem == consultBtns) {
+                    togglePopUp(consultPopUp)
+                } else {
+                    togglePopUp(checkingPopUp)
+                }
             }
     }
     }
