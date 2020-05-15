@@ -24,10 +24,10 @@ const popUpShow = () => {
         }}
     }
     const checkPopUp = (elem) =>{
-        if (elem == callPopUp) {
+        if (elem == callBtns) {
             togglePopUp(callPopUp);
         } else {
-            if (elem == discountPopUp) {
+            if (elem == discountBtns) {
                 togglePopUp(discountPopUp);
             } else {
                 togglePopUp(consultPopUp)
