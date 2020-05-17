@@ -13,6 +13,8 @@ const sendForm = () => {
     const bindingForm = (form) => {
         const statusMessage = document.createElement('div');
         form.addEventListener('submit', (event) =>  {
+            const inputs = form.querySelectorAll('input');
+            inputs.forEach(elem => elem.value = '')
             event.preventDefault();
             form.appendChild(statusMessage);
             statusMessage.textContent = loadMessage;
@@ -54,6 +56,7 @@ const sendForm = () => {
     const setReg = () => {
         const nameForms = document.querySelectorAll('[name="user_name"]');
         const telForms = document.querySelectorAll('[name="user_phone"]');
+        const questForms = document.querySelectorAll('[name="user_quest"]');
         nameForms.forEach((elem) => {
             elem.addEventListener('input', () => {
                 elem.value = elem.value.replace(/[^А-яа-я ]/g, '');
@@ -62,6 +65,11 @@ const sendForm = () => {
         telForms.forEach((elem) => {
             elem.addEventListener('input', () => {
                 elem.value = elem.value.replace(/[^+0-9]/g, '');
+            })
+        });
+        questForms.forEach((elem) => {
+            elem.addEventListener('input', () => {
+                elem.value = elem.value.replace(/[^А-Яа-я.,:?()"!]/g, '');
             })
         });
     }
