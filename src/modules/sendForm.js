@@ -25,6 +25,7 @@ const sendForm = () => {
                 });
                 if (form === consultForm){
                     body['qst'] = document.querySelector('input[name="user_quest"]').value;
+                    document.querySelector('input[name="user_quest"]').value = '';
                 }
                 postData(body)
                     .then((response) => {
