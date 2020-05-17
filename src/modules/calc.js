@@ -6,9 +6,9 @@ const calc = () => {
         collapseFour = document.querySelector('#collapseFour'),
         second = document.querySelector('.second');
     second.style.display = 'none'
-    // collapseTwo.classList.toggle('in');
-    // collapseThree.classList.toggle('in');
-    // collapseFour.classList.toggle('in');
+    collapseTwo.classList.toggle('in');
+    collapseThree.classList.toggle('in');
+    collapseFour.classList.toggle('in');
     switchCam.addEventListener('click', () => { // если true, то двухкамерный
         if (switchInput.hasAttribute('checked')) {
             switchInput.removeAttribute('checked');
