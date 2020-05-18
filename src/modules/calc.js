@@ -12,11 +12,9 @@ const calc = () => {
         first = document.querySelector('.first'),
         selects = document.querySelector('.constructor').querySelectorAll('select'),
         inputs = document.querySelector('.constructor').querySelectorAll('input');
+    document.querySelector('input[name="onoffswitch-two"]').setAttribute('sas', '')
     const collapses = [collapseOne, collapseTwo, collapseThree, collapseFour];
-    second.style.display = 'none'
-    // collapseTwo.classList.toggle('in');
-    // collapseThree.classList.toggle('in');
-    // collapseFour.classList.toggle('in');
+    second.style.display = 'none';
     let flag = true;
     let flag2 = true;
     const recount = () => {
@@ -65,9 +63,11 @@ const calc = () => {
     switchBottom.addEventListener('click', () => {
         if (flag2) {
             flag2 = false;
+            document.querySelector('input[name="onoffswitch-two"]').removeAttribute('sas');
             recount();
         } else {
             flag2 = true;
+            document.querySelector('input[name="onoffswitch-two"]').setAttribute('sas', '');
             recount()
         }
     })
@@ -93,7 +93,9 @@ const calc = () => {
             })
         } else {
             let target = event.target.closest('.panel-default').querySelector('.panel-collapse');
-            event.preventDefault()
+            if (event.target.tagName == 'A' || event.target.tagName == 'SPAN' && event.target.classList.contains('link-text')) {
+                event.preventDefault()
+            }
             collapses.forEach((elem) => {
                 if (elem !== target) {
                     if (elem.classList.contains('in')) {

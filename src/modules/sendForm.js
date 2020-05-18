@@ -27,6 +27,22 @@ const sendForm = () => {
                 body['qst'] = document.querySelector('input[name="user_quest"]').value;
                 document.querySelector('input[name="user_quest"]').value = '';
             }
+            if (form == discountForm) {
+                if (document.getElementById('inputLen').value !== '') {
+                    body['diamFirst'] = document.querySelector('.first').querySelector('.diam').value;
+                    body['countFirst'] = document.querySelector('.first').querySelector('.count').value;
+                    if (document.querySelector('.second').style.display == 'block') {
+                        body['diamSecond'] = document.querySelector('.second').querySelector('.diam').value;
+                        body['countSecond'] = document.querySelector('.second').querySelector('.count').value;
+                    }
+                    if (document.querySelector('input[name="onoffswitch-two"]').hasAttribute('sas')) {
+                        body['bottom'] = 'true';
+                    } else {
+                        body['bottom'] = 'false';
+                    }
+                    body['rasst'] = document.getElementById('inputLen').value;
+                }
+            }
             postData(body)
                 .then((response) => {
                     if (response.status != 200) {

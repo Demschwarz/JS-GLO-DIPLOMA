@@ -30,13 +30,15 @@ const popUpShow = () => {
         if (elem == callBtns) {
             togglePopUp(callPopUp);
         } else {
-            if (elem == discountBtns || elem == constructBtns) {
+            if (elem == discountBtns || (elem == constructBtns && document.getElementById('inputLen').value !== '')) {
                 togglePopUp(discountPopUp);
             } else {
                 if (elem == consultBtns) {
                     togglePopUp(consultPopUp)
                 } else {
-                    togglePopUp(checkingPopUp)
+                    if (elem == checkBtns) {
+                        togglePopUp(checkingPopUp)
+                    }
                 }
             }
     }
