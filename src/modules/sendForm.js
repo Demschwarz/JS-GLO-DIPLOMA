@@ -13,34 +13,34 @@ const sendForm = () => {
     const bindingForm = (form) => {
         const statusMessage = document.createElement('div');
         form.addEventListener('submit', (event) =>  {
-            const inputs = form.querySelectorAll('input');
-            inputs.forEach(elem => elem.value = '')
             event.preventDefault();
             form.appendChild(statusMessage);
             statusMessage.textContent = loadMessage;
             const formData = new FormData(form);
-                let body = {};
-                formData.forEach((val, key) => {
-                    body[key] = val;
+            let body = {};
+            formData.forEach((val, key) => {
+                body[key] = val;
+            });
+            const inputs = form.querySelectorAll('input');
+            inputs.forEach(elem => elem.value = '');
+            if (form === consultForm){
+                body['qst'] = document.querySelector('input[name="user_quest"]').value;
+                document.querySelector('input[name="user_quest"]').value = '';
+            }
+            postData(body)
+                .then((response) => {
+                    if (response.status != 200) {
+                        throw new Error('network status is not 200');
+                    }
+                    statusMessage.textContent = sucsessMessage;
+                    setTimeout(() => form.removeChild(statusMessage), 10000)
+                    
+                })
+                .catch(error => {
+                    console.error(error);
+                    statusMessage.textContent = errorMessage;
+                    setTimeout(() => form.removeChild(statusMessage), 10000)
                 });
-                if (form === consultForm){
-                    body['qst'] = document.querySelector('input[name="user_quest"]').value;
-                    document.querySelector('input[name="user_quest"]').value = '';
-                }
-                postData(body)
-                    .then((response) => {
-                        if (response.status != 200) {
-                            throw new Error('network status is not 200');
-                        }
-                        statusMessage.textContent = sucsessMessage;
-                        setTimeout(() => form.removeChild(statusMessage), 10000)
-                        
-                    })
-                    .catch(error => {
-                        console.error(error);
-                        statusMessage.textContent = errorMessage;
-                        setTimeout(() => form.removeChild(statusMessage), 10000)
-                    });
         });
         
         const postData = (body) => {
@@ -70,7 +70,7 @@ const sendForm = () => {
         });
         questForms.forEach((elem) => {
             elem.addEventListener('input', () => {
-                elem.value = elem.value.replace(/[^А-Яа-я.,:?()"!]/g, '');
+                elem.value = elem.value.replace(/[^А-Яа-я.,:?()"! ]/g, '');
             })
         });
     }

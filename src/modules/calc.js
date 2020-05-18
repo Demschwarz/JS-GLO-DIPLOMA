@@ -3,6 +3,7 @@ const calc = () => {
         switchBottom = document.querySelector('.onoffswitch-label.label-bottom'),
         switchCamInput = document.querySelector('.onoffswitch-checkbox.input-type'),
         switchBottomInput = document.querySelector('.onoffswitch-checkbox.input-bottom'),
+        collapseOne = document.getElementById('collapseOne'),
         collapseTwo = document.getElementById('collapseTwo'),
         collapseThree = document.getElementById('collapseThree'),
         collapseFour = document.getElementById('collapseFour'),
@@ -11,10 +12,11 @@ const calc = () => {
         first = document.querySelector('.first'),
         selects = document.querySelector('.constructor').querySelectorAll('select'),
         inputs = document.querySelector('.constructor').querySelectorAll('input');
+    const collapses = [collapseOne, collapseTwo, collapseThree, collapseFour];
     second.style.display = 'none'
-    collapseTwo.classList.toggle('in');
-    collapseThree.classList.toggle('in');
-    collapseFour.classList.toggle('in');
+    // collapseTwo.classList.toggle('in');
+    // collapseThree.classList.toggle('in');
+    // collapseFour.classList.toggle('in');
     let flag = true;
     let flag2 = true;
     const recount = () => {
@@ -72,14 +74,38 @@ const calc = () => {
     recount();
     selects.forEach((elem) => {
         elem.addEventListener('change', recount)
-    });
+    }); // для инпутов запуск функции работает при их изменении, смотри выше
+
+    document.querySelector('.constructor').querySelector('.panel-group').addEventListener('click', (event) => {
+        if ((event.target.tagName == 'A' && event.target.classList.contains('construct-btn')) || event.target.classList.contains('constructor-span')) {
+            const target = event.target.closest('.panel-collapse');
+            let flag = false;
+            collapses.forEach((elem) => {
+                if (elem == target) {
+                    flag = true;
+                    elem.classList.toggle('in')
+                } else {
+                    if (flag) {
+                        elem.classList.toggle('in');
+                        flag = false
+                    }
+                }
+            })
+        } else {
+            let target = event.target.closest('.panel-default').querySelector('.panel-collapse');
+            event.preventDefault()
+            collapses.forEach((elem) => {
+                if (elem !== target) {
+                    if (elem.classList.contains('in')) {
+                        elem.classList.toggle('in');
+                    }
+                } else {
+                    if (!elem.classList.contains('in')) {
+                        elem.classList.toggle('in');
+                    }
+                }
+            })
+        }
+    })
 }
 calc();
-
-// const accordion = document.querySelector('#accordion');
-// accordion.addEventListener('click', e => {
-//   const target = e.target;
-//   if(target.closest('#myonoffswitch')) {
-//     (target.checked) ? console.log(1) : console.log(0); 
-//   }
-// });

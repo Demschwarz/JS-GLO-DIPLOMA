@@ -10,12 +10,6 @@ const accordMenu = () => {
         target.querySelector('.panel-collapse').classList.toggle('in');
         activePanel.querySelector('.panel-collapse').classList.toggle('in');
         activePanel = target;
-        // panels.forEach(elem => {
-        //     if (elem === target) {
-        //         elem.querySelector('.panel-collapse').classList.add('in');
-        //     }
-        //     }
-        // })
     })
 }
 
