@@ -77,7 +77,7 @@ const calc = () => {
     }); // для инпутов запуск функции работает при их изменении, смотри выше
 
     document.querySelector('.constructor').querySelector('.panel-group').addEventListener('click', (event) => {
-        if ((event.target.tagName == 'A' && event.target.classList.contains('construct-btn')) || event.target.classList.contains('constructor-span')) {
+        if ((event.target.tagName == 'A ' && event.target.classList.contains('construct-btn')) || event.target.classList.contains('constructor-span')) {
             const target = event.target.closest('.panel-collapse');
             let flag = false;
             collapses.forEach((elem) => {
