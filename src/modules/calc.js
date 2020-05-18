@@ -110,4 +110,5 @@ const calc = () => {
         }
     })
 }
-calc();
+// calc();
+export default calc;

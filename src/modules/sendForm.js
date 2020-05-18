@@ -41,6 +41,7 @@ const sendForm = () => {
                         body['bottom'] = 'false';
                     }
                     body['rasst'] = document.getElementById('inputLen').value;
+                    body['sum'] = document.getElementById('calc-result').value;
                 }
             }
             postData(body)
@@ -92,4 +93,5 @@ const sendForm = () => {
     }
     setReg();
 }
-sendForm()
+// sendForm()
+export default sendForm;

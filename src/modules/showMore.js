@@ -9,4 +9,5 @@ const showMore = () => {
     })
 }
 
-showMore();
+// showMore();
+export default showMore;

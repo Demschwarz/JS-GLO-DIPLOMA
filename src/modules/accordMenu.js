@@ -13,4 +13,5 @@ const accordMenu = () => {
     })
 }
 
-accordMenu();
+// accordMenu();
+export default accordMenu;

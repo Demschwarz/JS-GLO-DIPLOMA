@@ -60,5 +60,5 @@ const popUpShow = () => {
     console.log(1);
 };
 
-popUpShow(); // удали строчку, когда будешь раскомментировать следующую
-// export default popUpShow;
+// popUpShow(); // удали строчку, когда будешь раскомментировать следующую
+export default popUpShow;
