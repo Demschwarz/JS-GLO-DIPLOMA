@@ -75,7 +75,7 @@ const sendForm = () => {
             elem.querySelector('button[type="submit"]').setAttribute('disabled', 'true');
         })
         forms.forEach(elem => {
-            elem.querySelector('input[name="user_phone"]').addEventListener('change', () => {
+            elem.querySelector('input[name="user_phone"]').addEventListener('input', () => {
                 if (elem.querySelector('input[name="user_phone"]').value.length < 5 || elem.querySelector('input[name="user_phone"]').value.length > 12) {
                     elem.querySelector('button[type="submit"]').setAttribute('disabled', 'true');
                 } else {
