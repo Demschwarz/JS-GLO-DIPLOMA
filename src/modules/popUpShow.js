@@ -1,10 +1,10 @@
 const popUpShow = () => {
-    const callBtns = document.querySelectorAll('a.call-btn'), // получаем кнопки
+    const callBtns = document.querySelectorAll('a.call-btn'),
         discountBtns = document.querySelectorAll('.discount-btn'),
         consultBtns = document.querySelectorAll('.director-btn'),
         checkBtns = document.querySelectorAll('.check-btn'),
         constructBtns = document.querySelectorAll('button.construct-btn'),
-        callPopUp = document.querySelector('.popup-call'), // получаем формыы
+        callPopUp = document.querySelector('.popup-call'),
         discountPopUp = document.querySelector('.popup-discount'),
         consultPopUp = document.querySelector('.popup-consultation'),
         checkingPopUp = document.querySelector('.popup-check');
@@ -27,16 +27,16 @@ const popUpShow = () => {
         }}
     }
     const checkPopUp = (elem) =>{
-        if (elem == callBtns) {
+        if (elem === callBtns) {
             togglePopUp(callPopUp);
         } else {
-            if (elem == discountBtns || (elem == constructBtns && document.getElementById('inputLen').value !== '')) {
+            if (elem === discountBtns || (elem === constructBtns && document.getElementById('inputLen').value !== '')) {
                 togglePopUp(discountPopUp);
             } else {
-                if (elem == consultBtns) {
+                if (elem === consultBtns) {
                     togglePopUp(consultPopUp)
                 } else {
-                    if (elem == checkBtns) {
+                    if (elem === checkBtns) {
                         togglePopUp(checkingPopUp)
                     }
                 }
@@ -60,5 +60,4 @@ const popUpShow = () => {
     console.log(1);
 };
 
-// popUpShow(); // удали строчку, когда будешь раскомментировать следующую
 export default popUpShow;

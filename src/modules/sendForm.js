@@ -27,11 +27,11 @@ const sendForm = () => {
                 body['qst'] = document.querySelector('input[name="user_quest"]').value;
                 document.querySelector('input[name="user_quest"]').value = '';
             }
-            if (form == discountForm) {
+            if (form === discountForm) {
                 if (document.getElementById('inputLen').value !== '') {
                     body['diamFirst'] = document.querySelector('.first').querySelector('.diam').value;
                     body['countFirst'] = document.querySelector('.first').querySelector('.count').value;
-                    if (document.querySelector('.second').style.display == 'block') {
+                    if (document.querySelector('.second').style.display === 'block') {
                         body['diamSecond'] = document.querySelector('.second').querySelector('.diam').value;
                         body['countSecond'] = document.querySelector('.second').querySelector('.count').value;
                     }
@@ -93,5 +93,4 @@ const sendForm = () => {
     }
     setReg();
 }
-// sendForm()
 export default sendForm;

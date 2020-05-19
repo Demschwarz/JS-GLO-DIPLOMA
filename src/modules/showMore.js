@@ -9,5 +9,4 @@ const showMore = () => {
     })
 }
 
-// showMore();
 export default showMore;

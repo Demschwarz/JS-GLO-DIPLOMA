@@ -3,7 +3,7 @@ const accordMenu = () => {
     const panelGroup = document.querySelector('.questions').querySelector('.panel-group');
     panelGroup.addEventListener('click', (event) => {
         let target = event.target;
-        if (target.tagName == 'a') {
+        if (target.tagName === 'a') {
             event.preventDefault()
         }
         target = event.target.closest(".panel-default");
@@ -12,6 +12,4 @@ const accordMenu = () => {
         activePanel = target;
     })
 }
-
-// accordMenu();
 export default accordMenu;
