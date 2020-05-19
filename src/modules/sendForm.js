@@ -78,8 +78,10 @@ const sendForm = () => {
             elem.querySelector('input[name="user_phone"]').addEventListener('input', () => {
                 if (elem.querySelector('input[name="user_phone"]').value.length < 5 || elem.querySelector('input[name="user_phone"]').value.length > 12) {
                     elem.querySelector('button[type="submit"]').setAttribute('disabled', 'true');
+                    elem.querySelector('input[name="user_phone"]').style.border = '1px solid red';
                 } else {
                     elem.querySelector('button[type="submit"]').removeAttribute('disabled')
+                    elem.querySelector('input[name="user_phone"]').style.border = '1px solid gray';
                 }
             })
         })
