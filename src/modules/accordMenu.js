@@ -1,6 +1,6 @@
 const accordMenu = () => {
-    let activePanel = document.querySelector('.questions').querySelector('.panel-default');
-    const panelGroup = document.querySelector('.questions').querySelector('.panel-group');
+    let activePanel = document.querySelector('.questions .panel-default');
+    const panelGroup = document.querySelector('.questions .panel-group');
     panelGroup.addEventListener('click', (event) => {
         let target = event.target;
         if (target.tagName === 'a') {

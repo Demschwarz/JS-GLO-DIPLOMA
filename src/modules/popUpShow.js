@@ -57,7 +57,6 @@ const popUpShow = () => {
             })
     })}
     bind()
-    console.log(1);
 };
 
 export default popUpShow;

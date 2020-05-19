@@ -2,14 +2,13 @@ const sendForm = () => {
     const errorMessage = 'Что-то пошло не так...',
         loadMessage = 'Загрузка',
         sucsessMessage = 'Спасибо! Мы скоро с Вами свяжемся!',
-        callForm = document.querySelector('.popup-call').querySelector('.capture-form'),
-        discountForm = document.querySelector('.popup-discount').querySelector('.capture-form'),
-        consultForm = document.querySelector('.popup-consultation').querySelector('.capture-form'),
+        callForm = document.querySelector('.popup-call .capture-form'),
+        discountForm = document.querySelector('.popup-discount .capture-form'),
+        consultForm = document.querySelector('.popup-consultation .capture-form'),
         mainForm = document.querySelector('.main-form'),
-        sectionForm = document.querySelector('.section-form').querySelector('.capture-form'),
-        checkingForm = document.querySelector('.popup-check').querySelector('.capture-form'),
+        sectionForm = document.querySelector('.section-form .capture-form'),
+        checkingForm = document.querySelector('.popup-check .capture-form'),
         forms = [callForm, discountForm, consultForm, mainForm, sectionForm, checkingForm];
-// document.querySelector('.popup-call').style.display = 'block';
     const bindingForm = (form) => {
         const statusMessage = document.createElement('div');
         form.addEventListener('submit', (event) =>  {
@@ -29,11 +28,11 @@ const sendForm = () => {
             }
             if (form === discountForm) {
                 if (document.getElementById('inputLen').value !== '') {
-                    body['diamFirst'] = document.querySelector('.first').querySelector('.diam').value;
-                    body['countFirst'] = document.querySelector('.first').querySelector('.count').value;
+                    body['diamFirst'] = document.querySelector('.first .diam').value;
+                    body['countFirst'] = document.querySelector('.first .count').value;
                     if (document.querySelector('.second').style.display === 'block') {
-                        body['diamSecond'] = document.querySelector('.second').querySelector('.diam').value;
-                        body['countSecond'] = document.querySelector('.second').querySelector('.count').value;
+                        body['diamSecond'] = document.querySelector('.second .diam').value;
+                        body['countSecond'] = document.querySelector('.second .count').value;
                     }
                     if (document.querySelector('input[name="onoffswitch-two"]').hasAttribute('sas')) {
                         body['bottom'] = 'true';

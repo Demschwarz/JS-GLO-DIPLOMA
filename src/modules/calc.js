@@ -76,7 +76,7 @@ const calc = () => {
         elem.addEventListener('change', recount)
     });
 
-    document.querySelector('.constructor').querySelector('.panel-group').addEventListener('click', (event) => {
+    document.querySelector('.constructor .panel-group').addEventListener('click', (event) => {
         if ((event.target.tagName === 'A ' && event.target.classList.contains('construct-btn')) || event.target.classList.contains('constructor-span')) {
             const target = event.target.closest('.panel-collapse');
             let flag = false;
