@@ -3,9 +3,7 @@ const accordMenu = () => {
     const panelGroup = document.querySelector('.questions .panel-group');
     panelGroup.addEventListener('click', (event) => {
         let target = event.target;
-        if (target.tagName === 'a') {
-            event.preventDefault()
-        }
+        event.preventDefault()
         target = event.target.closest(".panel-default");
         target.querySelector('.panel-collapse').classList.toggle('in');
         activePanel.querySelector('.panel-collapse').classList.toggle('in');
