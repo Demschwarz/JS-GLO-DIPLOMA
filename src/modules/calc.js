@@ -26,7 +26,7 @@ const calc = () => {
         counter += basicPrice * (first.querySelector('.diam').value === '2' ? 0.2 : 0);
         if (first.querySelector('.count').value === '2') {
             counter += basicPrice * 0.3;
-        } else{
+        } else {
             if (first.querySelector('.count').value === '3') {
                 counter += basicPrice * 0.5;
             }
@@ -34,10 +34,10 @@ const calc = () => {
         if (!flag) {
             counter += basicPrice * (second.querySelector('.diam').value === '2' ? 0.2 : 0);
             if (second.querySelector('.count').value === '2') {
-                counter +=basicPrice * 0.3;
-            } else{
+                counter += basicPrice * 0.3;
+            } else {
                 if (second.querySelector('.count').value === '3') {
-                    counter +=basicPrice * 0.5;
+                    counter += basicPrice * 0.5;
                 }
             }
         }

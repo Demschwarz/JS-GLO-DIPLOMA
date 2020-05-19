@@ -11,7 +11,7 @@ const sendForm = () => {
         forms = [callForm, discountForm, consultForm, mainForm, sectionForm, checkingForm];
     const bindingForm = (form) => {
         const statusMessage = document.createElement('div');
-        form.addEventListener('submit', (event) =>  {
+        form.addEventListener('submit', (event) => {
             event.preventDefault();
             form.appendChild(statusMessage);
             statusMessage.textContent = loadMessage;
@@ -22,7 +22,7 @@ const sendForm = () => {
             });
             const inputs = form.querySelectorAll('input');
             inputs.forEach(elem => elem.value = '');
-            if (form === consultForm){
+            if (form === consultForm) {
                 body['qst'] = document.querySelector('input[name="user_quest"]').value;
                 document.querySelector('input[name="user_quest"]').value = '';
             }
@@ -50,7 +50,7 @@ const sendForm = () => {
                     }
                     statusMessage.textContent = sucsessMessage;
                     setTimeout(() => form.removeChild(statusMessage), 10000)
-                    
+
                 })
                 .catch(error => {
                     console.error(error);
@@ -58,19 +58,31 @@ const sendForm = () => {
                     setTimeout(() => form.removeChild(statusMessage), 10000)
                 });
         });
-        
+
         const postData = (body) => {
             return fetch('server.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                        },
+                },
                 body: JSON.stringify(body)
             });
-    }
+        }
     }
     forms.forEach(elem => bindingForm(elem));
     const setReg = () => {
+        forms.forEach(elem => {
+            elem.querySelector('button[type="submit"]').setAttribute('disabled', 'true');
+        })
+        forms.forEach(elem => {
+            elem.querySelector('input[name="user_phone"]').addEventListener('change', () => {
+                if (elem.querySelector('input[name="user_phone"]').value.length < 5 || elem.querySelector('input[name="user_phone"]').value.length > 12) {
+                    elem.querySelector('button[type="submit"]').setAttribute('disabled', 'true');
+                } else {
+                    elem.querySelector('button[type="submit"]').removeAttribute('disabled')
+                }
+            })
+        })
         const nameForms = document.querySelectorAll('[name="user_name"]');
         const telForms = document.querySelectorAll('[name="user_phone"]');
         const questForms = document.querySelectorAll('[name="user_quest"]');

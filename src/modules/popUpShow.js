@@ -21,14 +21,15 @@ const popUpShow = () => {
         if (target.classList.contains('popup-close')) {
             elem.style.display = 'none';
         } else {
-        target = target.closest('.popup-content');
-        if (!target) {
-            elem.style.display = 'none';
-        }}
+            target = target.closest('.popup-content');
+            if (!target) {
+                elem.style.display = 'none';
+            }
+        }
     }
-    const checkPopUp = (elem) =>{
+    const checkPopUp = (elem) => {
         switch (elem) {
-            case callBtns :{
+            case callBtns: {
                 togglePopUp(callPopUp);
                 break;
             }
@@ -50,32 +51,22 @@ const popUpShow = () => {
                 togglePopUp(checkingPopUp)
                 break;
             }
-        } 
-    //     if (elem === callBtns) {
-    //     } else {
-    //         if (elem === discountBtns || (elem === constructBtns && document.getElementById('inputLen').value !== '')) {
-    //         } else {
-    //             if (elem === consultBtns) {
-    //             } else {
-    //                 if (elem === checkBtns) {
-    //                 }
-    //             }
-    //         }
-    // }
+        }
     }
 
     const bind = () => {
         popUpList.forEach((elem) => {
             elem.forEach((btn) => {
                 btn.addEventListener('click', (event) => {
-                    event.preventDefault(); 
+                    event.preventDefault();
                     checkPopUp(elem)
                 })
             });
             popUps.forEach((elem) => {
-                elem.addEventListener('click',(event) => closePopUp(elem))
+                elem.addEventListener('click', (event) => closePopUp(elem))
             })
-    })}
+        })
+    }
     bind()
 };
 
