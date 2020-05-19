@@ -27,21 +27,41 @@ const popUpShow = () => {
         }}
     }
     const checkPopUp = (elem) =>{
-        if (elem === callBtns) {
-            togglePopUp(callPopUp);
-        } else {
-            if (elem === discountBtns || (elem === constructBtns && document.getElementById('inputLen').value !== '')) {
-                togglePopUp(discountPopUp);
-            } else {
-                if (elem === consultBtns) {
-                    togglePopUp(consultPopUp)
-                } else {
-                    if (elem === checkBtns) {
-                        togglePopUp(checkingPopUp)
-                    }
-                }
+        switch (elem) {
+            case callBtns :{
+                togglePopUp(callPopUp);
+                break;
             }
-    }
+            case discountBtns: {
+                togglePopUp(discountPopUp);
+                break;
+            }
+            case constructBtns: {
+                if (document.getElementById('inputLen').value !== '') {
+                    togglePopUp(discountPopUp);
+                }
+                break;
+            }
+            case consultBtns: {
+                togglePopUp(consultPopUp)
+                break;
+            }
+            case checkBtns: {
+                togglePopUp(checkingPopUp)
+                break;
+            }
+        } 
+    //     if (elem === callBtns) {
+    //     } else {
+    //         if (elem === discountBtns || (elem === constructBtns && document.getElementById('inputLen').value !== '')) {
+    //         } else {
+    //             if (elem === consultBtns) {
+    //             } else {
+    //                 if (elem === checkBtns) {
+    //                 }
+    //             }
+    //         }
+    // }
     }
 
     const bind = () => {
